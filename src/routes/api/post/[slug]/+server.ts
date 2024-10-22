@@ -9,10 +9,16 @@ export const GET = async ({ params }) => {
   const fileContents = fs.readFileSync(filePath, 'utf8');
   const { data, content } = matter(fileContents);
 
+  // Calculate estimated reading time
+  const wordsPerMinute = 200;
+  const words = content.split(/\s+/).length;
+  const timeToRead = Math.ceil(words / wordsPerMinute);
+
   const post = {
     ...data,
     content,
-    slug
+    slug,
+    timeToRead: `${timeToRead} min read`
   };
 
   return json(post);

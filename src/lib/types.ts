@@ -13,6 +13,10 @@ export interface Post {
   slug: string;
   content: string;
   author: string;
+  authorImage: string;
+  authorBio: string;
+  authorTwitter: string;
+  authorLinkedIn: string;
   timeToRead: string;
 }
 

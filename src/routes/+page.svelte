@@ -13,7 +13,7 @@
       <p>Published on: {new Date(post.datePublished).toLocaleDateString()}</p>
       <p>Author: {post.author}</p>
       <p>{post.description}</p>
-      <p>Estimated reading time: {post.timeToRead} minutes</p>
+      <p>Estimated reading time: {post.timeToRead}</p>
       <a href={`/blog/${post.slug}`}>Read more</a>
     </li>
   {/each}

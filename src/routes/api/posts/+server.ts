@@ -12,10 +12,16 @@ export const GET = async () => {
     const fileContents = fs.readFileSync(filePath, 'utf8');
     const { data, content } = matter(fileContents);
 
+    // Calculate estimated reading time
+    const wordsPerMinute = 200;
+    const words = content.split(/\s+/).length;
+    const timeToRead = Math.ceil(words / wordsPerMinute);
+
     return {
       ...data,
       content,
-      slug: filename.replace('.md', '')
+      slug: filename.replace('.md', ''),
+      timeToRead: `${timeToRead} min read`
     };
   });
 

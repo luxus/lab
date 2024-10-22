@@ -15,6 +15,7 @@ authorImage: 'john-doe.jpg'
 authorBio: 'John is a professional photographer with over 20 years of experience.'
 authorTwitter: '@johndoe'
 authorLinkedIn: 'https://www.linkedin.com/in/johndoe'
+timeToRead: '5 min read'
 ---
 
 ![Placeholder Image](https://via.placeholder.com/150)
