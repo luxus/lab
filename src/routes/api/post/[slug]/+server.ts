@@ -10,7 +10,7 @@ type BlogModule = {
 
 export const GET = async ({ params }) => {
   const { slug } = params;
-  const modules = import.meta.glob<BlogModule>('/_posts/blog/*.md', { eager: false });
+  const modules = import.meta.glob<BlogModule>('/_posts/blog/*.md', { eager: true });
 
   const matchedModule = Object.entries(modules).find(([path]) => {
     const fileSlug = path.split('/').pop()?.replace('.md', '');
