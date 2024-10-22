@@ -3,13 +3,14 @@ import fs from 'fs';
 import path from 'path';
 
 export const GET = async () => {
-  const postsDirectory = path.resolve('src/_posts/blog');
+  const postsDirectory = path.resolve('src/content/blog');
   const filenames = fs.readdirSync(postsDirectory);
 
   const authors = filenames.reduce((acc, filename) => {
     const filePath = path.join(postsDirectory, filename);
     const fileContents = fs.readFileSync(filePath, 'utf8');
-    const { author, authorImage, authorBio, authorTwitter, authorLinkedIn } = JSON.parse(fileContents);
+    const { author, authorImage, authorBio, authorTwitter, authorLinkedIn } =
+      JSON.parse(fileContents);
 
     if (!acc[author]) {
       acc[author] = {

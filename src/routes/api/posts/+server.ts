@@ -5,7 +5,7 @@ type BlogModule = {
 };
 
 export const GET = async () => {
-  const modules = import.meta.glob<BlogModule>('/_posts/blog/*.md', { eager: false });
+  const modules = import.meta.glob<BlogModule>('/content/blog/*.md', { eager: false });
   const posts = await Promise.all(
     Object.entries(modules).map(async ([path, resolver]) => {
       const { metadata } = await resolver();
