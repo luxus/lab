@@ -10,8 +10,14 @@ ogSquareImage: 'folding-camera-open-graph-square.jpg'
 twitterImage: 'folding-camera-twitter.jpg'
 categories: ''
 tags: ''
+author: 'John Doe'
+authorImage: 'john-doe.jpg'
+authorBio: 'John is a professional photographer with over 20 years of experience.'
+authorTwitter: '@johndoe'
+authorLinkedIn: 'https://www.linkedin.com/in/johndoe'
 ---
 
+![Placeholder Image](https://via.placeholder.com/150)
 
 ## What is a Folding Camera?
 

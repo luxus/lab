@@ -12,6 +12,8 @@ export interface Post {
   tags: string;
   slug: string;
   content: string;
+  author: string;
+  timeToRead: string;
 }
 
 export type BlogPostMetadata = Omit<Post, 'content'>;
