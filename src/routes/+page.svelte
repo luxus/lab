@@ -1,7 +1,23 @@
 <script lang="ts">
   import type { BlogPostMetadata } from '$lib/types';
+  import { fetchPostContent } from './+page.server';
 
   export let data: { posts: (BlogPostMetadata & { slug: string, author: string, timeToRead: string })[] };
+
+  let expandedPostSlug: string | null = null;
+
+  const expandPost = async (slug: string) => {
+    if (expandedPostSlug === slug) {
+      expandedPostSlug = null;
+    } else {
+      expandedPostSlug = slug;
+      const post = await fetchPostContent(slug);
+      const postElement = document.getElementById(`post-${slug}`);
+      if (postElement) {
+        postElement.innerHTML = post.content;
+      }
+    }
+  };
 </script>
 
 <h1>Blog Posts</h1>
@@ -14,7 +30,8 @@
       <p>Author: {post.author}</p>
       <p>{post.description}</p>
       <p>Estimated reading time: {post.timeToRead}</p>
-      <a href={`/blog/${post.slug}`}>Read more</a>
+      <a href="javascript:void(0)" on:click={() => expandPost(post.slug)}>Read more</a>
+      <div id={`post-${post.slug}`}></div>
     </li>
   {/each}
 </ul>
