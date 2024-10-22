@@ -6,7 +6,6 @@
   ];
   idx.extensions = [
     "svelte.svelte-vscode"
-    "vue.volar"
   ];
   idx.previews = {
     previews = {
