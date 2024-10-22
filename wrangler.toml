@@ -3,3 +3,7 @@ name = "lab"
 compatibility_date = "2024-10-18"
 compatibility_flags = ["nodejs_als"]
 pages_build_output_dir = ".svelte-kit/cloudflare"
+
+[vars]
+NODE_VERSION = "23"
+BUN_VERSION = "1.1.32"
