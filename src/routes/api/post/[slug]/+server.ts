@@ -1,24 +1,33 @@
 import { json } from '@sveltejs/kit';
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
+import type { BlogPostMetadata } from '$lib/types';
+
+type BlogModule = {
+  metadata: BlogPostMetadata;
+  default: {
+    render: () => { html: string };
+  };
+};
 
 export const GET = async ({ params }) => {
   const { slug } = params;
-  const filePath = path.resolve(`src/_posts/blog/${slug}.md`);
-  const fileContents = fs.readFileSync(filePath, 'utf8');
-  const { data, content } = matter(fileContents);
+  const modules = import.meta.glob<BlogModule>('/_posts/blog/*.md', { eager: false });
 
-  // Calculate estimated reading time
-  const wordsPerMinute = 200;
-  const words = content.split(/\s+/).length;
-  const timeToRead = Math.ceil(words / wordsPerMinute);
+  const matchedModule = Object.entries(modules).find(([path]) => {
+    const fileSlug = path.split('/').pop()?.replace('.md', '');
+    return fileSlug === slug;
+  });
+
+  if (!matchedModule) {
+    return json({ error: 'Post not found' }, { status: 404 });
+  }
+
+  const { metadata, default: contentModule } = await matchedModule[1]();
+  const content = contentModule.render().html;
 
   const post = {
-    ...data,
+    ...metadata,
     content,
-    slug,
-    timeToRead: `${timeToRead} min read`
+    slug
   };
 
   return json(post);

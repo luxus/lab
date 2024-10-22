@@ -15,3 +15,9 @@ export const load = async ({ fetch }) => {
 
   return { posts: sortedPosts };
 };
+
+export const fetchPostContent = async (slug: string) => {
+  const response = await fetch(`/api/post/${slug}`);
+  const post = await response.json();
+  return post;
+};
