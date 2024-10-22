@@ -9,14 +9,13 @@
 		"preview": "bun run build && wrangler dev",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"deploy": "bun run build && wrangler deploy",
+		"deploy": "bun run build && wrangler pages deploy",
 		"cf-typegen": "wrangler types && mv worker-configuration.d.ts src/",
 		"lint": "eslint . && prettier --check .",
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
 		"@cloudflare/workers-types": "^4.20241018.0",
-		"@sveltejs/adapter-auto": "^3.2.5",
 		"@sveltejs/adapter-cloudflare": "^4.7.3",
 		"@sveltejs/kit": "^2.7.2",
 		"@sveltejs/vite-plugin-svelte": "^4.0.0",
@@ -25,6 +24,7 @@
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.46.0",
 		"globals": "^15.11.0",
+		"mdsvex": "^0.11.2",
 		"prettier": "^3.3.3",
 		"prettier-plugin-svelte": "^3.2.7",
 		"sv": "^0.5.7",

@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "vscodevim.vim",
+        "svelte.svelte-vscode",
+        "bradlc.vscode-tailwindcss",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint"
+    ]
+}
